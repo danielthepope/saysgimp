@@ -18,19 +18,11 @@ get '/dan/:text' do
     output = "generated/#{hash}.jpg"
     puts output
     if File.file?(output)
-        puts 'going to GIMP'
-        done = `gimp -i -b '(dan "#{params['text']}" "#{output}")' -b "(gimp-quit 0)"`
-        puts "Done: #{done}"
-    else
         puts 'returning from cache'
+    else
+        puts 'going to GIMP'
+        `gimp -i -b '(dan "#{params['text']}" "#{output}")' -b "(gimp-quit 0)"`
+        puts 'generated..?'
     end
     send_file output
 end
-
-__END__
-
-GIMP needs to
-- Load base file
-- Create text layer with specified colour
-- Convert text to raster
-- Transform text to screen
