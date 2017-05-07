@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<h1>Says</h1>
+<p>Use with caution.</p>
+
+<% people.each do |person| %>
+    <h2><%= person[:name] %></h2>
+    <p><img src="<%= person[:image] %>"></p>
+    <form action="/<%= person[:name] %>">
+        <textarea id="<%= person[:name] %>" name="text"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+<% end %>

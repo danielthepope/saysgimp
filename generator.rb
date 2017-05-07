@@ -24,7 +24,7 @@ class Generator
     end
 
     def generate_image person, text, output
-        base_image = "images/#{person['image']}"
+        base_image = "public/images/#{person['image']}"
         x1 = person['screen'][0]
         y1 = person['screen'][1]
         x2 = person['screen'][2]
@@ -39,7 +39,7 @@ class Generator
         screen_width = person['widescreen'] ? 960 : 720
         screen_height = 540
 
-        #(says input-image output-image words black-red black-green black-blue screen-width screen-height x1 y1 x2 y2 x3 y3 x4 y4)
+        # There is something very bad with escaping characters here...
         `gimp -i -b '(says "#{base_image}" "#{output}" \
             "#{text}" #{red} #{green} #{blue} #{screen_width} #{screen_height} \
             #{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4} \

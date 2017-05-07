@@ -13,4 +13,13 @@ class People
     def [] name
         @people[name]
     end
+
+    def all
+        @people.keys.map do |person|
+            {
+                :name => person.capitalize,
+                :image => "images/#{@people[person]['image']}"
+            }
+        end
+    end
 end
