@@ -1,0 +1,17 @@
+# name in square brackets
+# screen coordinates go top-left, top-right, bottom-left, bottom-right
+# text_colour in rgb values
+
+[ben]
+image = "ben.png"
+font_size = 80
+screen = [ 318, 17, 724, 20, 317, 274, 721, 273 ]
+text_colour = [ 142, 151, 158 ]
+widescreen = true
+
+[dan]
+image = "dan.jpg"
+font_size = 80
+screen = [ 44, 21, 328, 188, 24, 402, 328, 436 ]
+text_colour = [ 147, 95, 74 ]
+widescreen = false
