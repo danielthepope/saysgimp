@@ -28,8 +28,7 @@
 
            (projector (car (gimp-image-merge-down image text-layer EXPAND-AS-NECESSARY)))                            ;; merge text layer onto projector
            (projector (car (gimp-item-transform-perspective projector x1 y1 x2 y2 x3 y3 x4 y4)))                     ;; perspective transform projector layer
-        ;    (background (car (gimp-image-merge-visible-layers image CLIP-TO-BOTTOM-LAYER)))                           ;; merge layers before exporting to jpg
+           (background (car (gimp-image-merge-visible-layers image CLIP-TO-BOTTOM-LAYER)))                           ;; merge layers before exporting to jpg
           )
         (gimp-file-save RUN-NONINTERACTIVE image background output-image output-image))
-    (gimp-quit 0)
 )
