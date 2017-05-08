@@ -39,12 +39,24 @@ class Generator
         screen_width = person['widescreen'] ? 960 : 720
         screen_height = 540
 
-        # There is something very bad with escaping characters here...
-        `gimp -i -b '(says "#{base_image}" "#{output}" \
-            "#{text}" #{red} #{green} #{blue} #{screen_width} #{screen_height} \
-            #{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4} \
-            )' -b "(gimp-quit 0)"`
+        command = %Q[gimp -i -b "(says \\"#{base_image}\\" \\"#{output}\\" \\"]
+        command += sanitize(text)
+        command += %Q[\\" #{red} #{green} #{blue} #{screen_width} #{screen_height} \
+#{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4} \
+)" -b '(gimp-quit 0)']
 
-        output
+        puts command
+
+        system(command)
+
+        File.file?(output) ? output : base_image
+    end
+
+    def sanitize text
+        text.gsub(/\\/, '\\\\\\\\\\\\\\\\')
+            .gsub(/'/, '\\\\\'')
+            .gsub(/"/, '\\\\\\\\\\"')
+            .gsub(/\$/, '\\\\$')
+            .gsub(/`/, '\\\\`')
     end
 end

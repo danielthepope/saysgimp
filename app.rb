@@ -1,7 +1,7 @@
 require 'sinatra'
 
-require './generator.rb'
-require './people.rb'
+require_relative 'generator'
+require_relative 'people'
 
 people = People.new
 generator = Generator.new
@@ -12,7 +12,7 @@ end
 
 get '/:who' do
     person = params['who'].downcase
-    text = params['text'].gsub(/[\\]/, '\\\\\\\\').gsub(/[']/, '\\\\\'').gsub(/["]/, '\\"')
+    text = params['text']
     puts text
     puts request.path
     puts person
