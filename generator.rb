@@ -24,6 +24,7 @@ class Generator
     end
 
     def generate_image person, text, output
+        text = add_newlines text
         base_image = "public/images/#{person['image']}"
         x1 = person['screen'][0]
         y1 = person['screen'][1]
@@ -58,5 +59,21 @@ class Generator
             .gsub(/"/, '\\\\\\\\\\"')
             .gsub(/\$/, '\\\\$')
             .gsub(/`/, '\\\\`')
+    end
+
+    def add_newlines text
+        charcount = 0
+        char_target = 15
+        output = ''
+        text.split(/ /).each do |word|
+            if charcount + word.length > char_target
+                output += "\n#{word}"
+                charcount = word.length
+            else
+                output += " #{word}"
+                charcount += word.length
+            end
+        end
+        output.strip
     end
 end
