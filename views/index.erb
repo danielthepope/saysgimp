@@ -20,7 +20,11 @@
         <div class="row">
         <div class="col-xs-12">
         <h2><%= person[:name] %></h2>
-        <p><img id="<%= person[:name] %>-img" src="<%= person[:image] %>" class="img-rounded img-responsive"></p>
+        <p>
+            <a id="<%= person[:name] %>-link" href="<%= person[:image] %>">
+                <img id="<%= person[:name] %>-img" src="<%= person[:image] %>" class="img-rounded img-responsive">
+            </a>
+        </p>
         <div class="form-inline">
             <textarea id="<%= person[:name] %>" class="form-control" name="text"></textarea>
             <button id="<%= person[:name] %>-btn" type="button" class="btn btn-default btn-lg" onclick="updateImage('<%= person[:name] %>')">Update</button>
@@ -35,8 +39,8 @@
     function updateImage(person) {
         var text = encodeURIComponent(document.getElementById(person).value);
         document.getElementById(person+'-img').setAttribute('src', '/'+person+'?text='+text);
-    }
-    
+        document.getElementById(person+'-link').setAttribute('href', '/'+person+'?text='+text);
+    }    
 </script>
 </body>
 </html>

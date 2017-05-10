@@ -24,8 +24,9 @@ class Generator
     end
 
     def generate_image person, text, output
-        text = add_newlines text
         base_image = "public/images/#{person['image']}"
+        return base_image if text.strip == ''
+        text = add_newlines text
         x1 = person['screen'][0]
         y1 = person['screen'][1]
         x2 = person['screen'][2]
