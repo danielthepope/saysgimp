@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<h1>Says</h1>
-<p>Use with caution.</p>
+<html>
+<head>
+    <title>Says</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        div.container {
+            max-width: 700px;
+        }
+    </style>
 
-<% people.each do |person| %>
-    <h2><%= person[:name] %></h2>
-    <p><img src="<%= person[:image] %>"></p>
-    <form action="/<%= person[:name] %>">
-        <textarea id="<%= person[:name] %>" name="text"></textarea>
-        <input type="submit" value="Submit">
-    </form>
-<% end %>
+</head>
+
+<body>
+<div class="container">
+    <h1>Says</h1>
+    <p>Make these JSOxforders say whatever you want!</p>
+
+    <% people.each do |person| %>
+        <div class="row">
+        <div class="col-xs-12">
+        <h2><%= person[:name] %></h2>
+        <p><img id="<%= person[:name] %>-img" src="<%= person[:image] %>" class="img-rounded img-responsive"></p>
+        <div class="form-inline">
+            <textarea id="<%= person[:name] %>" class="form-control" name="text"></textarea>
+            <button id="<%= person[:name] %>-btn" type="button" class="btn btn-default btn-lg" onclick="updateImage('<%= person[:name] %>')">Update</button>
+        </div>
+        </div>
+        </div>
+        <hr>
+    <% end %>
+    <p>Says is a <a href="https://github.com/danielthepope/saysgimp">terrible hack</a> by <a href="https://twitter.com/danielthepope">@danielthepope</a>.</p>
+</div>
+<script>
+    function updateImage(person) {
+        var text = encodeURIComponent(document.getElementById(person).value);
+        document.getElementById(person+'-img').setAttribute('src', '/'+person+'?text='+text);
+    }
+    
+</script>
+</body>
+</html>
