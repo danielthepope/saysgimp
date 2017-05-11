@@ -27,7 +27,7 @@
            (noret (car (gimp-layer-set-mode dark-overlay SCREEN-MODE)))
            (noret (car (gimp-image-insert-layer image dark-overlay 0 -1)))
 
-           (noret (car (gimp-file-save RUN-NONINTERACTIVE image background "generated/most-recent.xcf" "generated/most-recent.xcf")))
+        ;    (noret (car (gimp-file-save RUN-NONINTERACTIVE image background "generated/most-recent.xcf" "generated/most-recent.xcf")))
 
         ;    (background (car (gimp-image-merge-down image projector EXPAND-AS-NECESSARY)))
         ;    (background (car (gimp-image-merge-down image light-overlay EXPAND-AS-NECESSARY)))
