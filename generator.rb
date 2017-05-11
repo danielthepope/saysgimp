@@ -26,7 +26,7 @@ class Generator
     def generate_image person, text, output
         base_image = "public/images/#{person['image']}"
         return base_image if text.strip == ''
-        text = add_newlines text
+        text = add_newlines(text, person['widescreen'] ? 20 : 15)
         x1 = person['screen'][0]
         y1 = person['screen'][1]
         x2 = person['screen'][2]
@@ -62,9 +62,8 @@ class Generator
             .gsub(/`/, '\\\\`')
     end
 
-    def add_newlines text
+    def add_newlines text, char_target
         charcount = 0
-        char_target = 15
         output = ''
         text.split(/ /).each do |word|
             if charcount + word.length > char_target
