@@ -5,35 +5,41 @@
 [ben]
 image = "ben.png"
 screen = [ 318, 17, 724, 20, 317, 274, 721, 273 ]
-text_colour = [ 142, 151, 158 ]
 widescreen = true
+overlay_dark = "ben-dark-overlay.png"
+overlay_light = "ben-light-overlay.png"
 
 [dan]
 image = "dan.jpg"
-screen = [ 44, 21, 328, 188, 24, 402, 328, 436 ]
-text_colour = [ 147, 95, 74 ]
+screen = [ 44, 22, 330, 189, 25, 404, 329, 438 ]
 widescreen = false
+overlay_dark = "dan-dark-overlay.png"
+overlay_light = "dan-light-overlay.png"
 
 [pete]
 image = "pete.png"
 screen = [ 29, -11, 488, 67, -4, 399, 485, 358 ]
-text_colour = [ 165, 165, 170 ]
 widescreen = false
+overlay_dark = "pete-dark-overlay.png"
+overlay_light = "pete-light-overlay.png"
 
 [ruth]
 image = "ruth.png"
 screen = [ 93, 74, 515, 87, 84, 312, 516, 313 ]
-text_colour = [ 80, 83, 74 ]
 widescreen = true
+overlay_dark = "ruth-dark-overlay.png"
+overlay_light = "ruth-light-overlay.png"
 
 [ryan]
 image = "ryan.png"
 screen = [ 0, 36, 338, 64, -4, 316, 338, 294 ]
-text_colour = [ 168, 183, 200 ]
 widescreen = false
+overlay_dark = "ryan-dark-overlay.png"
+overlay_light = "ryan-light-overlay.png"
 
 [seren]
 image = "seren.png"
 screen = [ 235, 11, 728, 5, 233, 355, 728, 372 ]
-text_colour = [ 22, 20, 28 ]
 widescreen = false
+overlay_dark = "seren-dark-overlay.png"
+overlay_light = "seren-light-overlay.png"

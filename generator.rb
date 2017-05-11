@@ -35,15 +35,14 @@ class Generator
         y3 = person['screen'][5]
         x4 = person['screen'][6]
         y4 = person['screen'][7]
-        red = person['text_colour'][0]
-        green = person['text_colour'][1]
-        blue = person['text_colour'][2]
+        dark_file = "overlays/#{person['overlay_dark']}"
+        light_file = "overlays/#{person['overlay_light']}"
         screen_width = person['widescreen'] ? 960 : 720
         screen_height = 540
 
         command = %Q[gimp -i -b "(says \\"#{base_image}\\" \\"#{output}\\" \\"]
         command += sanitize(text)
-        command += %Q[\\" #{red} #{green} #{blue} #{screen_width} #{screen_height} \
+        command += %Q[\\" \\"#{dark_file}\\" \\"#{light_file}\\" #{screen_width} #{screen_height} \
 #{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4} \
 )" -b '(gimp-quit 0)']
 
