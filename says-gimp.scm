@@ -33,6 +33,15 @@
         ;    (background (car (gimp-image-merge-down image light-overlay EXPAND-AS-NECESSARY)))
            (projector (car (gimp-image-merge-down image dark-overlay EXPAND-AS-NECESSARY)))
 
+           ; add watermark
+
+           (watermark (car (gimp-file-load-layer RUN-NONINTERACTIVE image "overlays/watermark.png")))
+           (noret (car (gimp-image-insert-layer image watermark 0 -1)))
+           (watermark-width (car (gimp-drawable-width watermark)))
+           (watermark-height (car (gimp-drawable-height watermark)))
+           (noret (car (gimp-layer-translate watermark (- image-width watermark-width)
+                                                       (- image-height watermark-height ))))
+
            (background (car (gimp-image-merge-visible-layers image CLIP-TO-BOTTOM-LAYER)))                           ;; merge layers before exporting to jpg
           )
         (gimp-file-save RUN-NONINTERACTIVE image background output-image output-image))
