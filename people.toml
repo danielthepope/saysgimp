@@ -16,6 +16,13 @@ widescreen = false
 overlay_dark = "dan-dark-overlay.png"
 overlay_light = "dan-light-overlay.png"
 
+[max]
+image = "max.jpg"
+screen = [ 221, 90, 462, 107, 228, 247, 472, 239 ]
+widescreen = true
+overlay_dark = "max-dark-overlay.png"
+overlay_light = "max-light-overlay.png"
+
 [pete]
 image = "pete.png"
 screen = [ 29, -11, 488, 67, -4, 399, 485, 358 ]
