@@ -40,25 +40,16 @@ class Generator
         screen_width = person['widescreen'] ? 960 : 720
         screen_height = 540
 
-        command = %Q[gimp -i -b "(says \\"#{base_image}\\" \\"#{output}\\" \\"]
-        command += sanitize(text)
-        command += %Q[\\" \\"#{dark_file}\\" \\"#{light_file}\\" #{screen_width} #{screen_height} \
-#{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4} \
-)" -b '(gimp-quit 0)']
-
-        puts command
-
-        system(command)
+        system('gimp', '-i', '-b',
+        %Q'(says "#{base_image}" "#{output}" "#{sanitize(text)}" "#{dark_file}" "#{light_file}" #{screen_width} #{screen_height} #{x1} #{y1} #{x2} #{y2} #{x3} #{y3} #{x4} #{y4})',
+        '-b', '(gimp-quit 0)')
 
         File.file?(output) ? output : base_image
     end
 
     def sanitize text
-        text.gsub(/\\/, '\\\\\\\\\\\\\\\\')
-            .gsub(/'/, '\\\\\'')
-            .gsub(/"/, '\\\\\\\\\\"')
-            .gsub(/\$/, '\\\\$')
-            .gsub(/`/, '\\\\`')
+        text.gsub(/\\/, '\\\\\\\\')
+            .gsub(/"/, '\\"')
     end
 
     def add_newlines text, char_target
