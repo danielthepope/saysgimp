@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    citrus (3.0.2)
     mustermann (1.0.2)
+    parslet (1.8.2)
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
@@ -12,15 +12,15 @@ GEM
       rack-protection (= 2.0.1)
       tilt (~> 2.0)
     tilt (2.0.8)
-    toml-rb (1.1.1)
-      citrus (~> 3.0, > 3.0)
+    toml (0.2.0)
+      parslet (~> 1.8.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   sinatra
-  toml-rb
+  toml
 
 BUNDLED WITH
    1.16.1
