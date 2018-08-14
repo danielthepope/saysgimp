@@ -15,11 +15,15 @@ $ gimp -v
 GNU Image Manipulation Program version 2.8.16
 ```
 
-Copy `says-gimp.scm` to `~/.gimp-2.8/scripts`
+Run `./setup.sh`, which does the following:
 
-Install Ruby dependencies with `bundle install`
+- Copy `says-gimp.scm` to `~/.gimp-2.8/scripts`
+- Install Ruby dependencies with `bundle install`
 
 ## Running
+
 ```
-ruby app.rb
+bundle exec rackup --host 0.0.0.0 -p 4567
 ```
+
+Or, use the handy `./run` script, which does the same thing.
